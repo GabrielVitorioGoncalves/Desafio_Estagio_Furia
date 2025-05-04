@@ -1,0 +1,23 @@
+{
+    "name": "furia-telegram-bot",
+    "version": "1.0.0",
+    "description": "Chatbot de informações sobre a FURIA",
+    "main": "bot.js",
+    "type": "module",
+    "scripts": {
+        "start": "node bot.js"
+    },
+    "keywords": [
+        "telegram",
+        "bot",
+        "furia",
+        "csgo",
+        "esports"
+    ],
+    "author": "Gabriel Vitorio Gonçalves",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^16.5.0",
+        "node-telegram-bot-api": "^0.61.0"
+    }
+}
