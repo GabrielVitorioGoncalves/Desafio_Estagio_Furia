@@ -3,10 +3,10 @@ import TelegramBot from 'node-telegram-bot-api';
 import { salvarMensagem } from './salvarMensagem.js';
 
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
-
-// Teclado inline principal
-const menuPrincipal = {
-  reply_markup: {
+const menuPrincipal = 
+{
+  reply_markup: 
+  {
     inline_keyboard: [
       [
         { text: '📊 Últimos resultados', callback_data: 'ultimos_resultados' },
@@ -22,29 +22,26 @@ const menuPrincipal = {
     ]
   }
 };
-
-// Botão de voltar ao menu
-const voltarMenu = {
-  reply_markup: {
+const voltarMenu =
+{
+  reply_markup: 
+  {
     inline_keyboard: [[{ text: '🔙 Voltar ao menu', callback_data: 'menu' }]]
   }
 };
-
-// Comando /start
-bot.onText(/\/start/, (msg) => {
+bot.onText(/\/start/, (msg) => 
+{
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, `👋 Olá, ${msg.from.first_name}! Eu sou o bot de informações da FURIA Esports. Sobre o que você quer saber?`, menuPrincipal);
 });
-
-// Resposta aos botões (callback)
-bot.on('callback_query', async (callbackQuery) => {
+bot.on('callback_query', async (callbackQuery) => 
+{
   const { data } = callbackQuery;
   const chatId = callbackQuery.message.chat.id;
   const timestamp = new Date().toISOString();
-
   salvarMensagem(chatId, data, 'incoming', timestamp);
-
-  switch (data) {
+  switch (data) 
+  {
     case 'ultimos_resultados':
       await bot.sendMessage(chatId, '📊 Últimos resultados da FURIA:\n\n- FURIA 0x2 The Mongolz\n- FURIA 0x2Virtus pro\n- FURIA 2x0 MIBR', voltarMenu);
       break;
